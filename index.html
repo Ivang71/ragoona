@@ -1,11 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ragoona</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        :root {
+            --white: #FDFDFD;
+            --red: #DE3939;
+        }
+        body {
+            background: black;
+            font-family: "Montserrat", serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            scroll-behavior: smooth;
+        }
+        a {
+            color: unset;
+            text-decoration: none;
+        }
+        button {
+            outline: none;
+            border: none;
+            background: none;
+            color: var(--white);
+        }
+        .header {
+            padding: 66px 0 10vh;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            color: var(--white);
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .header-link {
+            position: relative;
+        }
+        .header-link::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--white);
+            opacity: 50%;
+        }
+        .hero-block::before {
+            content: "";
+            z-index: -10;
+            position: absolute;
+            inset: 0 0 0 0;
+            min-height: 90vh;
+            background: url(./assets/images/bg.webp);
+            background-size: 110%;
+            background-position-y: -150px;
+            filter: blur(20px) saturate(0.7);
+            background-size: cover;         
+        }
+        .hero-block {
+            position: relative;
+            min-height: 80vh;
+            display: grid;
+            place-items: center;
+            color: var(--white);
+        }
+        .hero-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+        }
+        .main-logo {
+            width: 14%;
+        }
+        .hero-right-content {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .slogan {
+            margin-top: -11px;
+            font-size: 44px;
+            font-weight: 600;
+            line-height: 55px;
+        }
+        .cta {
+            margin: 0 auto;
+            padding: 10px 35px;
+            max-width: 231px;
+            font-size: 16px;
+            font-weight: 600;
+            border: 3px solid var(--white);
+            border-radius: 12px;
+        }
+    </style>
 </head>
+
 <body>
-    test
+    <section class="hero-block">
+        <header class="header">
+            <a href="#about">
+                <div class="header-link">ABOUT US</div>
+            </a>
+            <a href="#contacts">
+                <div class="header-link">CONTACTS</div>
+            </a>
+        </header>
+        <div class="hero-content">
+            <img class="main-logo" src="./assets/svg/logo.svg" alt="Ragoona logo">
+            <div class="hero-right-content">
+                <div class="slogan">
+                    <div>Crafting</div>
+                    <div>Connections</div>
+                    <div>Worldwide</div>
+                </div>
+                <button class="cta">Learn more</button>
+            </div>
+        </div>
+    </section>
+    
 </body>
+
 </html>
