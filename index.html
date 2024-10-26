@@ -15,18 +15,24 @@
         :root {
             --white: #FDFDFD;
             --red: #DE3939;
+            --gray: #1E1E1E;
+            --black: black;
+            /* scroll-behavior: smooth; */
         }
         body {
+            margin: 0;
             background: black;
             font-family: "Montserrat", serif;
             font-optical-sizing: auto;
             font-weight: 400;
             font-style: normal;
-            scroll-behavior: smooth;
         }
         a {
             color: unset;
             text-decoration: none;
+        }
+        h1 {
+            margin: 0;
         }
         button {
             outline: none;
@@ -35,7 +41,7 @@
             color: var(--white);
         }
         .header {
-            padding: 66px 0 10vh;
+            padding: 66px 0 20vh;
             width: 100%;
             display: flex;
             justify-content: space-around;
@@ -56,21 +62,22 @@
             background: var(--white);
             opacity: 50%;
         }
-        .hero-block::before {
+        .red-bg {
+            position: relative;
+        }
+        .red-bg::before {
             content: "";
             z-index: -10;
             position: absolute;
             inset: 0 0 0 0;
             min-height: 90vh;
             background: url(./assets/images/bg.webp);
-            background-size: 110%;
             background-position-y: -150px;
             filter: blur(20px) saturate(0.7);
             background-size: cover;         
         }
         .hero-block {
-            position: relative;
-            min-height: 80vh;
+            padding-bottom: 300px;
             display: grid;
             place-items: center;
             color: var(--white);
@@ -85,7 +92,18 @@
             gap: 40px;
         }
         .main-logo {
-            width: 14%;
+            max-width: 14%;
+        }
+        @media (max-width: 378px) {
+            .main-logo {
+                max-width: 50%;
+            }
+            .hero-right-content {
+                justify-content: flex-start !important;
+            }
+            .cta {
+                margin-top: 50px !important;
+            }
         }
         .hero-right-content {
             min-height: 100%;
@@ -108,32 +126,177 @@
             border: 3px solid var(--white);
             border-radius: 12px;
         }
+
+
+        .about {
+            padding: 113px 2% 100px 11%;
+            background: var(--white);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .about-text {
+        }
+        .about-heading {
+            font-size: 4rem;
+            font-weight: 800;
+        }
+        .about-copy {
+            margin: 30px 0;
+            max-width: 666px;
+            font-size: 20px;
+            font-weight: 500;
+        }
+        .hr-btn {
+            display: block;
+            margin-top: 30px;
+            padding: 18px;
+            width: fit-content;
+            color: var(--white);
+            background: var(--red);
+            font-size: 20px;
+            font-weight: 600;
+            border-radius: 16px;
+        }
+        .app-example {
+            max-width: 50%;
+            height: 100%;
+        }
+        @media (max-width: 768px) {
+            .app-example {
+                display: none;
+            }
+            .about {
+                padding-right: 11%;
+            }
+            .contact {
+                padding-right: 11%;
+            }
+        }
+
+
+        .team.red-bg::before {
+            background-position-y: 700px;
+            transform: rotate(180deg);
+        }
+        .team {
+            padding: 113px 11% 150px 11%;
+            color: var(--white);
+        }
+        .team-heading {
+            font-size: 4rem;
+            font-weight: 800;
+        }
+
+
+        .contact {
+            padding: 140px 2% 100px 11%;
+            display: flex;
+            justify-content: space-between;
+            background: var(--gray);
+            color: var(--white);
+        }
+        .contact-heading {
+            margin-bottom: 170px;
+            width: fit-content;
+            position: relative;
+            font-size: 4rem;
+            font-weight: 800;
+        }
+        .contact-subheading {
+            position: absolute;
+            bottom: -17px;
+            right: -20px;
+            color: var(--red);
+            font-size: 1.5rem;
+            font-weight: 600;           
+        }
+        .contact-mail {
+            display: block;
+            font-weight: 500;
+            line-height: 40px;
+        }
+        
+
+        .footer {
+            padding: 180px 0 90px;
+            display: flex;
+            justify-content: center;
+            gap: 10px 50px;
+            align-items: baseline;
+            background: var(--black);
+            color: var(--white);
+        }
+        .footer-logo {
+            height: 6rem;
+        }
     </style>
 </head>
 
 <body>
-    <section class="hero-block">
+    <section class="hero-block red-bg">
         <header class="header">
             <a href="#about">
                 <div class="header-link">ABOUT US</div>
             </a>
-            <a href="#contacts">
+            <a href="#contact">
                 <div class="header-link">CONTACTS</div>
             </a>
         </header>
         <div class="hero-content">
             <img class="main-logo" src="./assets/svg/logo.svg" alt="Ragoona logo">
             <div class="hero-right-content">
-                <div class="slogan">
+                <h1 class="slogan">
                     <div>Crafting</div>
                     <div>Connections</div>
                     <div>Worldwide</div>
-                </div>
-                <button class="cta">Learn more</button>
+                </h1>
+                <a class="cta" href="#about">Learn more</a>
             </div>
         </div>
     </section>
-    
-</body>
 
+    <section class="about" id="about">
+        <div class="about-text">
+            <h1 class="about-heading">About us</h1>
+            <div class="about-copy">
+                <p>We are professionals with combined experience of over 20 years in creating digital platforms that connect people.</p>
+                <p>Our team is global, working remotely from all corners of the earth. Our diverse perspectives fuel innovation.</p>
+                <p>We're always searching for talented individuals to join our team.</p>
+                <p>If you're passionate about product development, marketing, analytics, or creating exciting dating experiences, we'd love to hear from you.</p>
+                <p>Let's build the future of dating together!</p>
+            </div>
+            <a class="hr-btn" href="mailto:hr@ragoona.com">hr@ragoona.com</a>
+        </div>
+        <img class="app-example" src="./assets/images/phone.webp" alt="Ragoona App Example" loading="lazy" width="3000" height="2250">
+    </section>
+    
+    <section class="team red-bg">
+        <h1 class="team-heading">Our team</h1>
+        <div class="gallery">
+
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div>
+            <h1 class="contact-heading">
+                <span>Contacts</span>
+                <span class="contact-subheading">Quick&nbsp;contact&nbsp;info</span>
+            </h1>
+            <a href="mailto:hr@ragoona.com" class="contact-mail">ceo@ragoona.com</a>
+            <a href="mailto:hr@ragoona.com" class="contact-mail">hr@ragoona.com</a>
+        </div>
+        <img class="app-example" src="./assets/images/cloth.webp" alt="Ragoona App Example" loading="lazy" width="3000" height="2250">
+    </section>
+    
+    <footer class="footer">
+        <img class="footer-logo" src="./assets/svg/logo.svg" alt="Ragoona logo">
+        <div>© Ragoona <span id="year"></span>. All rights reserved</div>
+    </footer>
+
+    <script>
+        document.querySelector('#year').textContent = (new Date()).getFullYear()
+    </script>
+</body>
 </html>
