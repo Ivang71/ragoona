@@ -181,12 +181,44 @@
             transform: rotate(180deg);
         }
         .team {
-            padding: 113px 11% 150px 11%;
+            padding: 113px 0 150px 0;
             color: var(--white);
         }
         .team-heading {
+            margin-left: 11%;
             font-size: 4rem;
             font-weight: 800;
+        }
+        .gallery {
+            margin-top: 63px;
+            overflow: auto;
+            display: flex;
+            gap: 50px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .gallery::-webkit-scrollbar {
+            display: none;
+        }
+        .team-member {
+            min-width: 250px;
+        }
+        .team-member-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 23px;
+        }
+        .team-member-name {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 24px;
+        }
+        .team-member-title {
+            margin-top: 5px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 16px;            
         }
 
 
@@ -245,7 +277,7 @@
             </a>
         </header>
         <div class="hero-content">
-            <img class="main-logo" src="./assets/svg/logo.svg" alt="Ragoona logo">
+            <img class="main-logo" src="./assets/svg/logo.svg" alt="Ragoona logo" id="logo">
             <div class="hero-right-content">
                 <h1 class="slogan">
                     <div>Crafting</div>
@@ -274,8 +306,57 @@
     
     <section class="team red-bg">
         <h1 class="team-heading">Our team</h1>
-        <div class="gallery">
-
+        <div class="gallery" id="gallery">
+            <div class="team-member" style="margin-left:11%;">
+                <img class="team-member-img" src="./assets/images/team/ceo.webp" alt="CEO" loading="lazy" width="1024" height="1024">
+                <div class="team-member-name">Michael Stone</div>
+                <div class="team-member-title">CEO</div>
+            </div>
+            <div class="team-member">
+                <img class="team-member-img" src="./assets/images/team/cfo.webp" alt="CFO" loading="lazy" width="1024" height="1024">
+                <div class="team-member-name">Kenji Tanaka</div>
+                <div class="team-member-title">CFO</div>
+            </div>
+            <div class="team-member">
+                <img class="team-member-img" src="./assets/images/team/pr.webp" alt="Public relations" loading="lazy" width="1024" height="1024">
+                <div class="team-member-name">James Harris</div>
+                <div class="team-member-title">Public relations</div>
+            </div>
+            <div class="team-member">
+                <img class="team-member-img" src="./assets/images/team/ai.webp" alt="Data analyst" loading="lazy" width="1024" height="1024">
+                <div class="team-member-name">Hiro Nakamura</div>
+                <div class="team-member-title">AI engineer</div>
+            </div>
+            <div class="team-member">
+                <img class="team-member-img" src="./assets/images/team/prod.webp" alt="Product manager" loading="lazy" width="1024" height="1024">
+                <div class="team-member-name">Anya Chen</div>
+                <div class="team-member-title">Product manager</div>
+            </div>
+            <div class="team-member">
+                <img class="team-member-img" src="./assets/images/team/jun_prod.webp" alt="Junior product manger" loading="lazy" width="1024" height="1024">
+                <div class="team-member-name">Mei Lin</div>
+                <div class="team-member-title">Junior product manager</div>
+            </div>
+            <div class="team-member">
+                <img class="team-member-img" src="./assets/images/team/back.webp" alt="Backed developer" loading="lazy" width="1024" height="1024">
+                <div class="team-member-name">Ben Miller</div>
+                <div class="team-member-title">Backed developer</div>
+            </div>
+            <div class="team-member">
+                <img class="team-member-img" src="./assets/images/team/mlops.webp" alt="Backed developer 2" loading="lazy" width="1024" height="1024">
+                <div class="team-member-name">David Moore</div>
+                <div class="team-member-title">MLOps</div>
+            </div>
+            <div class="team-member">
+                <img class="team-member-img" src="./assets/images/team/front.webp" alt="Frontend developer" loading="lazy" width="1024" height="1024">
+                <div class="team-member-name">Aravind Kumar</div>
+                <div class="team-member-title">Frontend developer</div>
+            </div>
+            <div class="team-member" style="margin-right:11%;">
+                <img class="team-member-img" src="./assets/images/team/admin.webp" alt="Business administrator" loading="lazy" width="1024" height="1024">
+                <div class="team-member-name">Aisha Johnson</div>
+                <div class="team-member-title">Business administrator</div>
+            </div>
         </div>
     </section>
 
@@ -296,8 +377,34 @@
         <div>© Ragoona <span id="year"></span>. All rights reserved</div>
     </footer>
 
-    <script>
+    <script>1
+        // set year
         document.querySelector('#year').textContent = (new Date()).getFullYear()
+
+        // shift logo on mouse move
+        const logo = document.querySelector('#logo')
+        document.addEventListener('mousemove', (event) => {
+            const mouseX = -event.clientX
+            const mouseY = -event.clientY
+            logo.style.transform = `translate(${mouseX / 160}px, ${mouseY / 160}px)`
+        })
+
+        // animate gallery
+        let animateForward = true
+        const galleryEl = document.querySelector('#gallery')
+        const maxScrollLeft = galleryEl.scrollWidth - galleryEl.clientWidth
+        const shiftGallery = () => {
+            const step = animateForward ? 1 : -1
+            galleryEl.scrollLeft += step
+            if (galleryEl.scrollLeft >= maxScrollLeft) {
+                animateForward = false
+            }
+            if (galleryEl.scrollLeft <= 0) {
+                animateForward = true
+            }
+            requestAnimationFrame(shiftGallery)
+        }
+        shiftGallery()
     </script>
 </body>
 </html>
